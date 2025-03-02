@@ -1,8 +1,8 @@
-import { type Config } from "tailwindcss";
+import { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
-  content: ["./src/**/*.tsx"],
+  content: ["./src/**/*.{ts,tsx,css,scss,sass}"],
   theme: {
     extend: {
       fontFamily: {

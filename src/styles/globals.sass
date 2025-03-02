@@ -1,0 +1,105 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+@mixin gradient($direction, $start, $end)
+  background: linear-gradient($direction, $start, $end)
+
+$bg-color: #000000
+$color: #FFFFFF
+$colorHover: #E5E7EB
+$border-color: #7db6c3
+$boxshadow-color: #82b4bf
+$gradient-direction: 170deg
+$gradient-bg-srart: rgba(30, 45, 69, 0.89)
+$gradient-bg-end: rgba(20, 26, 40, 0.89)
+
+:root
+  --background-color: #{$bg-color}
+  --color: #{$color}
+  --colorHover: #{$colorHover}
+  --border-color: #{$border-color}
+  --boxshadow-color: #{$border-color}
+  --gradient-direction: #{$gradient-direction}
+  --gradient-bg-srart: #{$gradient-bg-srart}
+  --gradient-bg-end: #{$gradient-bg-end}
+
+[data-theme="dark"]
+  --background-color: #{$bg-color}
+  --color: #{$color}
+  --colorHover: #{$colorHover}
+  --border-color: #{$border-color}
+  --boxshadow-color: #{$border-color}
+  --gradient-direction: #{$gradient-direction}
+  --gradient-bg-srart: #{$gradient-bg-srart}
+  --gradient-bg-end: #{$gradient-bg-end}
+
+[data-theme="light"]
+  --background-color: theme("colors.white")
+  --color: theme("colors.black")
+  --colorHover: theme("colors.gray.800")
+  --border-color: theme("colors.gray.800")
+  --boxshadow-color: theme("colors.gray.800")
+  --gradient-direction: 170deg
+  --gradient-bg-srart: rgba(255, 255, 255, 0.89)
+  --gradient-bg-end: rgba(203, 213, 225, 0.89)
+
+body
+  overflow: hidden
+  background: var(--background-color)
+
+.body
+  @apply min-h-screen w-screen h-screen font-sans antialiased
+  @include gradient(var(--gradient-direction), var(--gradient-bg-srart), var(--gradient-bg-end))
+  color: var(--color)
+  background-attachment: fixed
+
+.body, nav, main
+  @apply transition-all duration-100
+
+
+
+// TOP NAVBAR
+.topnavbar
+  @apply sticky top-0 z-10
+  @include gradient(var(--gradient-direction), var(--gradient-bg-srart), var(--gradient-bg-end))
+  @apply border-b-2
+  box-shadow: 0 1px 9px var(--boxshadow-color)
+  border-bottom: 1px solid var(--border-color)
+  // NAVBAR
+  nav
+    @apply flex justify-between items-center
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem
+    // NAVBAR SECTION
+    .navbar-section
+      @apply flex items-center
+      .mob
+        display: none
+      .desk
+        display: block
+      .nav-item
+        @apply p-1 font-medium text-lg
+        img
+          @apply rounded-full
+          width: 32px
+          height: 32px
+          &:hover
+            border: 1px solid var(--border-color) 
+            box-shadow: 0 1px 9px var(--boxshadow-color)
+        &:first-letter
+          text-transform: uppercase
+        &:hover
+          @apply font-semibold
+          margin-left: -1px
+          text-shadow: 0 0 7px var(--gradient-bg-end), 0 0px 0px var(--border-color), 0 0 27px var(--border-color)
+        &:hover:first-child
+          margin-left: 0
+
+@media only screen and (max-width: 600px)
+  .topnavbar
+    nav
+      .navbar-section
+        .mob
+          display: block
+        .desk
+          display: none
