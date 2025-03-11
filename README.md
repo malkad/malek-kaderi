@@ -5,7 +5,7 @@ My website containing my resume, projects...
 ## TODO
 
 - [x] Make it deploy (w/ Vercel)
-- [ ] Scaffold basic UI with mock
+- [x] Scaffold basic UI with mock
 - [ ] Actually setup a database (w/ Vercel postgres)
 - [ ] Attache database to UI
 - [ ] Add authentication (w/ Clerk)

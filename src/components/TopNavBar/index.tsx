@@ -4,11 +4,16 @@ import { THEME_VALUES } from "~/contexts/ThemeContext/Theme.context";
 import { useThemeContext } from "~/contexts/ThemeContext/Theme.provider";
 import { NavBar, NavBarSection, LinkItem } from "~/components/NavBar";
 import { ThemeSwitcher } from "~/components/ThemeSwitcher";
+import classnames from "classnames";
+import { usePathname } from "next/navigation";
 
 const logo =
   "https://utfs.io/f/rFQ9luVpP9HJZF82qNOrgGJc2fTMpnK5Ayb16xNjmE7CBohX";
 
 const TopNavBar = () => {
+  const pathname = usePathname();
+
+  console.log(pathname);
   return (
     <div className="topnavbar">
       <NavBar>
@@ -24,10 +29,28 @@ const TopNavBar = () => {
           </LinkItem>
         </NavBarSection>
         <NavBarSection className="navigation">
-          <LinkItem href="/resume" className="desk">
+          <LinkItem
+            href="/"
+            className={classnames("desk", pathname == "/" ? "active" : "")}
+          >
+            {"Home"}
+          </LinkItem>
+          <LinkItem
+            href="/resume"
+            className={classnames(
+              "desk",
+              pathname == "/resume" ? "active" : "",
+            )}
+          >
             {"Resume"}
           </LinkItem>
-          <LinkItem href="/portfolio" className="desk">
+          <LinkItem
+            href="/portfolio"
+            className={classnames(
+              "desk",
+              pathname == "/portfolio" ? "active" : "",
+            )}
+          >
             {"Portfolio"}
           </LinkItem>
         </NavBarSection>

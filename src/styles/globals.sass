@@ -89,11 +89,11 @@ body
         &:first-letter
           text-transform: uppercase
         &:hover
-          @apply font-semibold
-          margin-left: -1px
           text-shadow: 0 0 7px var(--gradient-bg-end), 0 0px 0px var(--border-color), 0 0 27px var(--border-color)
         &:hover:first-child
           margin-left: 0
+      .active
+         text-shadow: 0 0 7px var(--gradient-bg-end), 0 0px 0px var(--border-color), 0 0 27px var(--border-color)
 
 @media only screen and (max-width: 600px)
   .topnavbar
